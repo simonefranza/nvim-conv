@@ -69,11 +69,11 @@ Outputs
 
 Add these to your .vimrc for some fast conversion:
 
-    nnoremap <Leader>cd :<C-u>ConvDec
-    nnoremap <Leader>ch :<C-u>ConvHex
-    nnoremap <Leader>co :<C-u>ConvOct
-    nnoremap <Leader>cb :<C-u>ConvBin
-    nnoremap <Leader>cs :<C-u>ConvStr
+    nnoremap <Leader>cd :<C-u>ConvDec<Space>
+    nnoremap <Leader>ch :<C-u>ConvHex<Space>
+    nnoremap <Leader>co :<C-u>ConvOct<Space>
+    nnoremap <Leader>cb :<C-u>ConvBin<Space>
+    nnoremap <Leader>cs :<C-u>ConvStr<Space>
 
 ## TODOs
 

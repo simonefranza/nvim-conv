@@ -1,5 +1,5 @@
-local function startsWith(string, substring)
-  return string.sub(string, 1, string.len(substring)) == substring
+local function startsWith(myString, substring)
+  return string.sub(myString, 1, string.len(substring)) == substring
 end
 
 local function convertToBin(param)
@@ -20,9 +20,9 @@ end
 local function convertToDecimal(param)
   local initPar = param
   param = vim.fn.eval(param)
-  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
-    not startsWith(numberPar, '0b') then
-      param = tonumber(numberPar, 8)
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+      param = tonumber(param, 8)
   end
   print(string.format("%s = %d", vim.fn.eval(initPar), param))
 end
@@ -30,9 +30,9 @@ end
 local function convertToHex(param)
   local initPar = param
   param = vim.fn.eval(param)
-  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
-    not startsWith(numberPar, '0b') then
-      param = tonumber(numberPar, 8)
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+      param = tonumber(param, 8)
   end
   print(string.format("%s = 0x%X", vim.fn.eval(initPar), param))
 end
@@ -40,9 +40,9 @@ end
 local function convertToOct(param)
   local initPar = param
   param = vim.fn.eval(param)
-  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
-    not startsWith(numberPar, '0b') then
-      param = tonumber(numberPar, 8)
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+      param = tonumber(param, 8)
   end
   print(string.format("%s = 0%o", vim.fn.eval(initPar), param))
 end
