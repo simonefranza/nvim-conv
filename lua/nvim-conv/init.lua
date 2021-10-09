@@ -18,15 +18,33 @@ local function convertToBin(param)
 end
 
 local function convertToDecimal(param)
-  print(string.format("%s = %d", vim.fn.eval(param), vim.fn.eval(param)))
+  local initPar = param
+  param = vim.fn.eval(param)
+  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
+    not startsWith(numberPar, '0b') then
+      param = tonumber(numberPar, 8)
+  end
+  print(string.format("%s = %d", vim.fn.eval(initPar), param))
 end
 
 local function convertToHex(param)
-  print(string.format("%s = 0x%X", vim.fn.eval(param), vim.fn.eval(param)))
+  local initPar = param
+  param = vim.fn.eval(param)
+  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
+    not startsWith(numberPar, '0b') then
+      param = tonumber(numberPar, 8)
+  end
+  print(string.format("%s = 0x%X", vim.fn.eval(initPar), param))
 end
 
 local function convertToOct(param)
-  print(string.format("%s = 0%o", vim.fn.eval(param), vim.fn.eval(param)))
+  local initPar = param
+  param = vim.fn.eval(param)
+  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
+    not startsWith(numberPar, '0b') then
+      param = tonumber(numberPar, 8)
+  end
+  print(string.format("%s = 0%o", vim.fn.eval(initPar), param))
 end
 
 local function convertToStr(param)
