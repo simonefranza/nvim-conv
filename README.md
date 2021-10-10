@@ -43,17 +43,18 @@ Conversion from decimal, hexadecimal and octal to binary
     :ConvBin 45
     45 = 0b101101
 
-Also with negative numbers
+Also with negative numbers (the binary number is extended to the next multiple of
+4)
 
     :ConvBin -3
-    -3 = 0b11111101
+    -3 = 0b1101
 
 ### Bytes to string
 
 Converts a sequence of bytes to a string
 
     :ConvStr 6e76696d2d636f6e76
-    nvim-conv
+    6e76696d2d636f6e76 = nvim-conv
 
 ## Suggested mappings
 

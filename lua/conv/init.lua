@@ -4,9 +4,12 @@ end
 
 local function computeTwosComplement(binary)
   local len = string.len(binary)
-  for cnt=len+1,2^(len+1),1 do
+  local newNumberOfBits = len + 1 + ((4- (len + 1)) % 4)
+
+  for cnt = len+1, newNumberOfBits, 1 do
     binary = '0' .. binary
   end
+
   len = string.len(binary)
   for cnt=len,1,-1 do
     local newBit = ''
@@ -37,17 +40,16 @@ local function computeTwosComplement(binary)
 end
 
 local function convertToBin(param)
-  local numberPar = vim.fn.eval(param)
   local isNegative = false
-  if string.sub(numberPar,1,1) == '-' then
+  if string.sub(param,1,1) == '-' then
     isNegative = true
-    numberPar = string.sub(numberPar, 2, string.len(numberPar))
+    param = string.sub(param, 2, string.len(param))
   end
 
-  local number = tonumber(numberPar) 
-  if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
-    not startsWith(numberPar, '0b') then
-      number = tonumber(numberPar, 8)
+  local number = tonumber(param) 
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+      number = tonumber(param, 8)
   end
   local numBits = math.floor(math.log(number)/math.log(2))
   local outputStr = ""
@@ -56,61 +58,65 @@ local function convertToBin(param)
   end
   if isNegative then
     outputStr = computeTwosComplement(outputStr)
-    numberPar = '-' .. numberPar
+    param = '-' .. param
   end
-  print(string.format('%s = 0b%s', numberPar, outputStr))
+  print(string.format('%s = 0b%s', param, outputStr))
 end
 
-local function convertToDecimal(param)
-  local initPar = param
-  param = vim.fn.eval(param)
-  if startsWith(param, '0') and not startsWith(param, '0x') and 
-    not startsWith(param, '0b') then
-      param = tonumber(param, 8)
-  end
-  print(string.format("%s = %d", vim.fn.eval(initPar), param))
-end
 
 local function convertToHex(param)
   local initPar = param
-  param = vim.fn.eval(param)
   if startsWith(param, '0') and not startsWith(param, '0x') and 
     not startsWith(param, '0b') then
       param = tonumber(param, 8)
   end
-  print(string.format("%s = 0x%X", vim.fn.eval(initPar), param))
+  print(string.format("%s = 0x%X", initPar, param))
 end
 
 local function convertToOct(param)
   local initPar = param
-  param = vim.fn.eval(param)
   if startsWith(param, '0') and not startsWith(param, '0x') and 
     not startsWith(param, '0b') then
       param = tonumber(param, 8)
   end
-  print(string.format("%s = 0%o", vim.fn.eval(initPar), param))
+  print(string.format("%s = 0%o", initPar, param))
 end
 
+-- Add with separated bytes
 local function convertToStr(param)
-  local bytes = vim.fn.eval(param)
   local strRes = ""
-  for idx=1,string.len(bytes)-1,2 do
-    strRes = strRes .. string.char(tonumber(string.sub(bytes, idx, idx + 1), 16))
+  for idx=1,string.len(param)-1,2 do
+    strRes = strRes .. string.char(tonumber(string.sub(param, idx, idx + 1), 16))
   end
-  print(strRes)
+  print(string.format("%s = %s", param, strRes))
+end
+
+local function convertToDecimal(param)
+  local initPar = param
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+      param = tonumber(param, 8)
+  end
+  print(string.format("%s = %d", initPar, param))
 end
 
 
 local function parseMode(mode, param)
   local dict = {
-                dec = convertToDecimal, 
-                hex = convertToHex,
-                bin = convertToBin,
-                oct = convertToOct,
-                str = convertToStr
-              }
-  dict[vim.fn.eval(mode)](param)
+              dec = convertToDecimal, 
+              hex = convertToHex,
+              bin = convertToBin,
+              oct = convertToOct,
+              str = convertToStr
+            }
+  dict[mode](param)
 end
+
+vim.cmd("command! -nargs=1 ConvBin lua require('conv.init').parseMode('bin', <f-args>)")
+vim.cmd("command! -nargs=1 ConvDec lua require('conv.init').parseMode('dec', <f-args>)")
+vim.cmd("command! -nargs=1 ConvHex lua require('conv.init').parseMode('hex', <f-args>)")
+vim.cmd("command! -nargs=1 ConvOct lua require('conv.init').parseMode('oct', <f-args>)")
+vim.cmd("command! -nargs=1 ConvStr lua require('conv.init').parseMode('str', <f-args>)")
 
 return {
   parseMode = parseMode
