@@ -1,1 +1,1 @@
-return require("conv.init")
+return require("conv.init").setup()
