@@ -2,8 +2,48 @@ local function startsWith(myString, substring)
   return string.sub(myString, 1, string.len(substring)) == substring
 end
 
+local function computeTwosComplement(binary)
+  local len = string.len(binary)
+  for cnt=len+1,2^(len+1),1 do
+    binary = '0' .. binary
+  end
+  len = string.len(binary)
+  for cnt=len,1,-1 do
+    local newBit = ''
+    if string.sub(binary, cnt, cnt) == '0' then
+      newBit = '1'
+    else
+      newBit = '0'
+    end
+    binary = string.sub(binary, 1, cnt-1) .. newBit .. string.sub(binary, cnt + 1, string.len(binary))
+  end
+  local carriage = 1
+  for cnt=len,1,-1 do
+    local newBit = ''
+    if string.sub(binary, cnt, cnt) == '0' and carriage == 1 then
+      newBit = '1'
+      carriage = 0
+    elseif string.sub(binary, cnt, cnt) == '0' and carriage == 0 then
+      goto continue
+    elseif string.sub(binary, cnt, cnt) == '1' and carriage == 1 then
+      newBit = '0'
+    else
+      goto continue
+    end
+    binary = string.sub(binary, 1, cnt-1) .. newBit .. string.sub(binary, cnt + 1, string.len(binary))
+    ::continue::
+  end
+  return binary
+end
+
 local function convertToBin(param)
   local numberPar = vim.fn.eval(param)
+  local isNegative = false
+  if string.sub(numberPar,1,1) == '-' then
+    isNegative = true
+    numberPar = string.sub(numberPar, 2, string.len(numberPar))
+  end
+
   local number = tonumber(numberPar) 
   if startsWith(numberPar, '0') and not startsWith(numberPar, '0x') and 
     not startsWith(numberPar, '0b') then
@@ -13,6 +53,10 @@ local function convertToBin(param)
   local outputStr = ""
   for cnt=0,numBits,1 do
     outputStr = bit.rshift(bit.band(number, bit.lshift(1, cnt)), cnt) .. outputStr
+  end
+  if isNegative then
+    outputStr = computeTwosComplement(outputStr)
+    numberPar = '-' .. numberPar
   end
   print(string.format('%s = 0b%s', numberPar, outputStr))
 end

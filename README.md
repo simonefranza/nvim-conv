@@ -22,47 +22,37 @@ This means that the number 45 has to be input as 0b101101 for binary, 0x2d (or 0
 for hexadecimal and 055 for octal.
 
 ### Base conversion
-    
+
 Conversion from octal, hex and binary to decimal
 
     :ConvDec 0x2d
-
-Outputs
-
     0x2d = 45
 
 Conversion from decimal, hex and binary to octal 
 
     :ConvOct 0x2d
-
-Outputs
-
     0x2d = 055
 
 Conversion from decimal, octal and binary to hexadecimal 
 
     :ConvHex 45
-
-Outputs
-
     045 = 0x2D
 
 Conversion from decimal, hexadecimal and octal to binary 
 
     :ConvBin 45
-
-Outputs
-
     45 = 0b101101
+
+Also with negative numbers
+
+    :ConvBin -3
+    -3 = 0b11111101
 
 ### Bytes to string
 
 Converts a sequence of bytes to a string
 
     :ConvStr 6e76696d2d636f6e76
-
-Outputs
-
     nvim-conv
 
 ## Suggested mappings
