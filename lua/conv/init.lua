@@ -113,13 +113,12 @@ local function parseMode(mode, param)
 end
 
 local function setup()
-  {
-    vim.cmd("command! -nargs=1 ConvBin lua require('conv.init').parseMode('bin', <f-args>)")
-    vim.cmd("command! -nargs=1 ConvDec lua require('conv.init').parseMode('dec', <f-args>)")
-    vim.cmd("command! -nargs=1 ConvHex lua require('conv.init').parseMode('hex', <f-args>)")
-    vim.cmd("command! -nargs=1 ConvOct lua require('conv.init').parseMode('oct', <f-args>)")
-    vim.cmd("command! -nargs=1 ConvStr lua require('conv.init').parseMode('str', <f-args>)")
-  }
+  vim.cmd("command! -nargs=1 ConvBin lua require('conv.init').parseMode('bin', <f-args>)")
+  vim.cmd("command! -nargs=1 ConvDec lua require('conv.init').parseMode('dec', <f-args>)")
+  vim.cmd("command! -nargs=1 ConvHex lua require('conv.init').parseMode('hex', <f-args>)")
+  vim.cmd("command! -nargs=1 ConvOct lua require('conv.init').parseMode('oct', <f-args>)")
+  vim.cmd("command! -nargs=1 ConvStr lua require('conv.init').parseMode('str', <f-args>)")
+end
 
 return {
   parseMode = parseMode,
