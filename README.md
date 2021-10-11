@@ -1,9 +1,11 @@
 # nvim-conv
 
-Conv is a simple converter that allows you to convert numbers and bytes.
+<div align='center'>
+    [![GitHub Stars](https://img.shields.io/github/stars/simonefranza/nvim-conv?style=social)](https://github.com/simonefranza/nvim-conv/stargazers/)
+    [![Last Commit](https://img.shields.io/github/last-commit/simonefranza/nvim-conv)](https://github.com/simonefranza/nvim-conv/pulse)
+</div>
 
-[![GitHub Stars](https://img.shields.io/github/stars/simonefranza/nvim-cong.svg?style=social&label=Star&maxAge=2592000)](https://github.com/simonefranza/nvim-conv/stargazers/)
-[![Last Commit](https://img.shields.io/github/last-commit/simonefranza/nvim-conv)](https://github.com/simonefranza/nvim-conv/pulse)
+Conv is a simple converter that allows you to convert numbers and bytes.
 
 ## Installation
 
@@ -99,4 +101,6 @@ have it in neovim, open a new issue.
 
 Copyright (c) Simone Franza. Conv is distributed under MIT License.
 
-![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+<div align = "center">
+    ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+</div>
