@@ -1,14 +1,5 @@
 # nvim-conv
 
-<p align="center">
-    <a href="https://github.com/simonefranza/nvim-conv/stargazers/" alt="GitHub Stars">
-        <img src="https://img.shields.io/github/stars/simonefranza/nvim-conv?style=social" />
-    </a>
-    <a href="https://github.com/simonefranza/nvim-conv/pulse" alt="Last Commit">
-        <img src="https://img.shields.io/github/last-commit/simonefranza/nvim-conv" />
-    </a>
-</p>
-
 Conv is a simple converter that allows you to convert numbers and bytes.
 
 ## Installation
@@ -120,6 +111,13 @@ have it in neovim, open a new issue.
 Copyright (c) Simone Franza. Conv is distributed under MIT License.
 
 <div align="center">
-    <img src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white" />
     <img src="https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white" />
+    <img src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white" />
+    </br>
+    <a href="https://github.com/simonefranza/nvim-conv/stargazers/" alt="GitHub Stars">
+        <img src="https://img.shields.io/github/stars/simonefranza/nvim-conv?style=social" />
+    </a>
+    <a href="https://github.com/simonefranza/nvim-conv/pulse" alt="Last Commit">
+        <img src="https://img.shields.io/github/last-commit/simonefranza/nvim-conv" />
+    </a>
 </div>
