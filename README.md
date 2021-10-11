@@ -1,7 +1,7 @@
 # nvim-conv
 
-<div align='center'>
-    [![GitHub Stars](https://img.shields.io/github/stars/simonefranza/nvim-conv?style=social)](https://github.com/simonefranza/nvim-conv/stargazers/)
+<div align="center">
+    [![GitHub Stars](https://img.shields.io/github/stars/simonefranza/nvim-conv?style=social)](https://github.com/simonefranza/nvim-conv/stargazers/)</br>
     [![Last Commit](https://img.shields.io/github/last-commit/simonefranza/nvim-conv)](https://github.com/simonefranza/nvim-conv/pulse)
 </div>
 
@@ -101,6 +101,6 @@ have it in neovim, open a new issue.
 
 Copyright (c) Simone Franza. Conv is distributed under MIT License.
 
-<div align = "center">
+<div align="center">
     ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
 </div>
