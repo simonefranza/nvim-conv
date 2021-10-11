@@ -2,6 +2,9 @@
 
 Conv is a simple converter that allows you to convert numbers and bytes.
 
+[![GitHub Stars](https://img.shields.io/github/stars/simonefranza/nvim-cong.svg?style=social&label=Star&maxAge=2592000)](https://github.com/simonefranza/nvim-conv/stargazers/)
+[![Last Commit](https://img.shields.io/github/last-commit/simonefranza/nvim-conv)](https://github.com/simonefranza/nvim-conv/pulse)
+
 ## Installation
 
 Install using your favorite plugin manager, for example for [Vim Plug](https://github.com/junegunn/vim-plug)
@@ -56,6 +59,19 @@ Converts a sequence of bytes to a string
     :ConvStr 6e76696d2d636f6e76
     6e76696d2d636f6e76 = nvim-conv
 
+Even with spaces out bytes
+
+    :ConvStr 6e 76 69 6d 2d 63 6f 6e 76
+    6e 76 69 6d 2d 63 6f 6e 76 = nvim-conv
+
+### String to bytes
+
+Convert any string to a sequence of bytes
+
+    :ConvBytes This plugin is amazing!
+    This plugin is amazing! = 0x5468697320706C7567696E20697320616D617A696E6721
+
+
 ## Suggested mappings
 
 Add these to your .vimrc for some fast conversion:
@@ -65,13 +81,14 @@ Add these to your .vimrc for some fast conversion:
     nnoremap <Leader>co :<C-u>ConvOct<Space>
     nnoremap <Leader>cb :<C-u>ConvBin<Space>
     nnoremap <Leader>cs :<C-u>ConvStr<Space>
+    nnoremap <Leader>ct :<C-u>ConvBytes<Space>
 
 ## TODOs
 
 The following conversions are on the TODO list:
 
 - miles to meters and viceversa
-- celsius to farenheit
+- Celsius to Farenheit and viceversa
 
 ## Add new conversions
 
@@ -81,3 +98,5 @@ have it in neovim, open a new issue.
 ## License
 
 Copyright (c) Simone Franza. Conv is distributed under MIT License.
+
+![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
