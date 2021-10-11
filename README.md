@@ -13,10 +13,24 @@ Conv is a simple converter that allows you to convert numbers and bytes.
 
 ## Installation
 
-Install using your favorite plugin manager, for example for [Vim Plug](https://github.com/junegunn/vim-plug)
-add the following to your .vimrc :
+Install using your favorite plugin manager: 
 
-    Plug 'simonefranza/nvim-conv'
+* [NeoBundle](https://github.com/Shougo/neobundle.vim)
+  ```vim
+  NeoBundle 'simonefranza/nvim-conv'
+  ```
+* [packer.nvim](https://github.com/wbthomason/packer.nvim):
+    ```lua
+    use {'simonefranza/nvim-conv'}
+    ```
+* [vim-plug](https://github.com/junegunn/vim-plug):
+  ```vim
+  Plug 'simonefranza/nvim-conv'
+  ```
+* [Vundle](https://github.com/VundleVim/Vundle.vim)
+  ```vim
+  Plugin 'simonefranza/nvim-conv'
+    ```
 
 ## Usage
 
