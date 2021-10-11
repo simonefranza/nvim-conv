@@ -121,4 +121,5 @@ Copyright (c) Simone Franza. Conv is distributed under MIT License.
 
 <div align="center">
     <img src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white" />
+    <img src="https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white" />
 </div>
