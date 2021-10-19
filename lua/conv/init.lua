@@ -112,6 +112,24 @@ local function convertToDecimal(param)
   print(string.format("%s = %d", initPar, param))
 end
 
+local function convertToFarenheit(param)
+  local initPar = param
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+    param = tonumber(param, 8)
+  end
+  print(string.format("%s = %.2f°C = %.2f°F", initPar, param, param*1.8 + 32))
+end
+
+local function convertToCelsius(param)
+  local initPar = param
+  if startsWith(param, '0') and not startsWith(param, '0x') and 
+    not startsWith(param, '0b') then
+    param = tonumber(param, 8)
+  end
+  print(string.format("%s = %.2f°F = %.2f°C", initPar, param, (param-32)/1.8))
+end
+
 
 local function parseMode(mode, param)
   local dict = {
@@ -120,7 +138,9 @@ local function parseMode(mode, param)
               bin = convertToBin,
               oct = convertToOct,
               str = convertToStr,
-              bytes = convertToBytes
+              bytes = convertToBytes,
+              far = convertToFarenheit,
+              cel = convertToCelsius
             }
   dict[mode](param)
 end
@@ -136,6 +156,8 @@ local function setup()
   vim.cmd("command! -nargs=1 ConvHex lua require('conv.init').parseMode('hex', <f-args>)")
   vim.cmd("command! -nargs=1 ConvOct lua require('conv.init').parseMode('oct', <f-args>)")
   vim.cmd("command! -nargs=+ ConvStr lua require('conv.init').parseMode('str', <q-args>)")
+  vim.cmd("command! -nargs=+ ConvFarenheit lua require('conv.init').parseMode('far', <q-args>)")
+  vim.cmd("command! -nargs=+ ConvCelsius lua require('conv.init').parseMode('cel', <q-args>)")
   vim.cmd("command! -nargs=+ ConvBytes lua require('conv.init').parseMode('bytes', <q-args>)")
 end
 

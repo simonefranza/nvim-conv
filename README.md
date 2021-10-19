@@ -82,6 +82,26 @@ Convert any string **to a sequence of bytes**
     :ConvBytes This plugin is amazing!
     This plugin is amazing! = 0x5468697320706C7567696E20697320616D617A696E6721
 
+### Celsius to Farenheit
+
+The input may be in decimal, hex, binary or octal base:
+
+    :ConvFarenheit 0b1100100
+    0b1100100 = 100.00°C = 212.00°F 
+    :ConvFarenheit 0xff
+    0xff = 255.00°C = 491.00°F
+    :ConvFarenheit -40
+    -40 = -40.00°C = -40.00°F
+
+### Farenheit to Celsius
+
+The input may be in decimal, hex, binary or octal base:
+
+    :ConvCelsius -135
+    -135 = -135.00°F = -92.78°C
+    :ConvCelsius 0xad2
+    0xad2 = 2770.00°F = 1521.11°C
+    0xff = 255.00°C = 491.00°F
 
 ## Suggested mappings
 
