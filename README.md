@@ -37,22 +37,22 @@ for hexadecimal and 055 for octal.
 
 ### Base conversion
 
-Conversion from octal, hex and binary to decimal
+Conversion from octal, hex and binary **to decimal**
 
     :ConvDec 0x2d
     0x2d = 45
 
-Conversion from decimal, hex and binary to octal 
+Conversion from decimal, hex and binary **to octal**
 
     :ConvOct 0x2d
     0x2d = 055
 
-Conversion from decimal, octal and binary to hexadecimal 
+Conversion from decimal, octal and binary **to hexadecimal**
 
     :ConvHex 45
     045 = 0x2D
 
-Conversion from decimal, hexadecimal and octal to binary 
+Conversion from decimal, hexadecimal and octal **to binary**
 
     :ConvBin 45
     45 = 0b101101
@@ -65,7 +65,7 @@ Also with negative numbers (the binary number is extended to the next multiple o
 
 ### Bytes to string
 
-Converts a sequence of bytes to a string
+Converts a sequence of bytes **to a string**
 
     :ConvStr 6e76696d2d636f6e76
     6e76696d2d636f6e76 = nvim-conv
@@ -77,7 +77,7 @@ Even with spaces out bytes
 
 ### String to bytes
 
-Convert any string to a sequence of bytes
+Convert any string **to a sequence of bytes**
 
     :ConvBytes This plugin is amazing!
     This plugin is amazing! = 0x5468697320706C7567696E20697320616D617A696E6721
