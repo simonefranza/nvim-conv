@@ -103,9 +103,95 @@ The input may be in decimal, hex, binary or octal base:
     0xad2 = 2770.00°F = 1521.11°C
     0xff = 255.00°C = 491.00°F
 
+### Data Transfer Rates
+
+Use `:ConvDataTransRate <value> <fromUnit> <toUnit>` to perform a conversion
+between data transfer rates.
+
+The supported rates are:
+
+  Bits per second
+  Bps, Kbps, Mbps, Gbps, Tbps
+  Bytes per second
+  B/s, KB/s, MB/s, GB/s, TB/s
+
+All the units are case insensitive. The units that specify bits per second
+can also be defined as MBit/s (in the case of Mbps). The units that specify 
+bytes per second can omit the '/', so MBs (or mbs) will be interpreted as MB/s.
+
+  :ConvDataTransRate 10 MBit/s KB/s
+  10 Mbps (MBit/s) = 1250.00 KB/s
+  :ConvDataTransRate 10 mbs kbps
+  10 MB/s = 80000.00 Kbps (KBit/s)
+
+### Metric - Imperial units
+
+Use `:ConvMetricImperial <value> <fromUnit> <toUnit>` to perform a conversion
+from a metric unit to an imperial one.
+
+The conversion can also be metric to metric (km to m for example) or imperial
+to imperial (mile to feet). For a list of available units [see below](#length-units).
+
+  :ConvMetricImperial 10 km ft 
+  10 km = 32808.40 ft
+  :ConvMetricImperial 1.52 meters cm
+  1 m = 152.00 cm
+  :ConvMetricImperial 1 foot inches
+  1 ft = 12.00 inch
+
+#### Unit names
+
+The units can be entered in a shortened fashion as mentioned [below](#length-units)
+or by their full name or even with the plural form.
+
+Some examples of corresponding units:
+
+  km, kilometer, kilometers = km
+  mi, mile, miles = mi
+
+Feet and inches can also be represented as ' and " respectively.
+
+#### Length Units
+Metric System
+
+  km, hm, dam, m, dm, cm, mm, um (micrometer), nm
+
+Imperial System
+
+  nmi, mi, yd, ft (or '), in (or ")
+
+#### Weight Units
+Metric System
+  
+  kg, hg, dag, g, dg, cg, mg, ug, ng
+
+Imperial System
+  
+  lb, oz
+
+## Additional features
+
+### Floating point precision
+
+Per default the conversion always prints 2 decimal digits, if you wish 
+to change it on the fly you can execute:
+  
+  :ConvSetPrecision 4
+
+to get 4 decimal digits in the current session. This value is reset to 2 
+when you restart vim.
+
+If you wish to make a permanent change, add the following at the end of your .vimrc (or init.vim):
+
+  let g:conv_precision = 4
+
+Or this if you are using init.lua:
+
+  vim.g.conv_precision = 4
+
 ## Suggested mappings
 
-Add these to your .vimrc for some fast conversion:
+Add these to your init.vim (or .vimrc or init.lua) for some fast conversion:
 
     nnoremap <Leader>cd :<C-u>ConvDec<Space>
     nnoremap <Leader>ch :<C-u>ConvHex<Space>
@@ -116,15 +202,12 @@ Add these to your .vimrc for some fast conversion:
 
 ## TODOs
 
-The following conversions are on the TODO list:
-
-- miles to meters and viceversa
-- Celsius to Farenheit and viceversa
+If new conversions are wished for, they will be added here.
 
 ## Add new conversions
 
 If there is a conversion that you often use and you would like to
-have it in neovim, open a new issue.
+have it in neovim, please open a new issue.
 
 ## License
 
