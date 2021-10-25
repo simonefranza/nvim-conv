@@ -1,6 +1,10 @@
 # nvim-conv
 
-Conv is a simple converter that allows you to convert numbers and bytes.
+Conv is a simple converter that allows you to convert:
+
+ - numbers from a base to another
+ - sequences of bytes into strings and viceversa
+ - values from one unit to another one
 
 ## Installation
 
@@ -130,7 +134,7 @@ Use `:ConvMetricImperial <value> <fromUnit> <toUnit>` to perform a conversion
 from a metric unit to an imperial one.
 
 The conversion can also be metric to metric (km to m for example) or imperial
-to imperial (mile to feet). For a list of available units [see below](#length-units).
+to imperial (mile to feet). For a list of available units [see below](#available-units).
 
     :ConvMetricImperial 10 km ft 
     10 km = 32808.40 ft
@@ -141,7 +145,7 @@ to imperial (mile to feet). For a list of available units [see below](#length-un
 
 #### Unit names
 
-The units can be entered in a shortened fashion as mentioned [below](#length-units)
+The units can be entered in a shortened fashion as mentioned [below](#available-units)
 or by their full name or even with the plural form.
 
 Some examples of corresponding units:
@@ -151,22 +155,20 @@ Some examples of corresponding units:
 
 Feet and inches can also be represented as ' and " respectively.
 
-#### Length Units
-Metric System
+#### Available Units 
 
+Length units:
+
+    Metric System
     km, hm, dam, m, dm, cm, mm, um (micrometer), nm
-
-Imperial System
-
+    Imperial System
     nmi, mi, yd, ft (or '), in (or ")
 
-#### Weight Units
-Metric System
-  
-    kg, hg, dag, g, dg, cg, mg, ug, ng
+Weight units:
 
-Imperial System
-  
+    Metric System
+    kg, hg, dag, g, dg, cg, mg, ug, ng
+    Imperial System
     lb, oz
 
 ## Additional features
