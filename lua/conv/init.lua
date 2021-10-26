@@ -247,7 +247,7 @@ local function convertMetricImperial(param)
     lb=453.592, oz=28.3495,
   }
   local precision = getPrecision()
-  print(string.format('%d %s = %.' .. precision .. 'f %s', value, fromUnit,
+  print(string.format('%.' .. precision .. 'f %s = %.' .. precision .. 'f %s', value, fromUnit,
       value*conversionMap[fromUnit]/conversionMap[toUnit], toUnit))
 end
 
@@ -264,7 +264,8 @@ local function convertDataTransferRate(param)
     ---- Bytes
     bs=8*10^-6, kbs=8*10^-3, mbs=8, gbs=8*10^3, tbs=8*10^6
   }
-  print(string.format('%d %s = %.' .. getPrecision() .. 'f %s', value, utils.prettifyDTRUnit(fromUnit),
+  local precision = getPrecision()
+  print(string.format('%.' ..precision .. 'f %s = %.' .. precision .. 'f %s', value, utils.prettifyDTRUnit(fromUnit),
     value*conversionMap[fromUnit]/conversionMap[toUnit], utils.prettifyDTRUnit(toUnit)))
 end
 

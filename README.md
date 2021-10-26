@@ -125,8 +125,8 @@ bytes per second can omit the '/', so MBs (or mbs) will be interpreted as MB/s.
 
     :ConvDataTransRate 10 MBit/s KB/s
     10 Mbps (MBit/s) = 1250.00 KB/s
-    :ConvDataTransRate 10 mbs kbps
-    10 MB/s = 80000.00 Kbps (KBit/s)
+    :ConvDataTransRate 10.5 mbs kbps
+    10.50 MB/s = 84000.00 Kbps (KBit/s)
 
 ### Metric - Imperial units
 
@@ -137,11 +137,11 @@ The conversion can also be metric to metric (km to m for example) or imperial
 to imperial (mile to feet). For a list of available units [see below](#available-units).
 
     :ConvMetricImperial 10 km ft 
-    10 km = 32808.40 ft
+    10.00 km = 32808.40 ft
     :ConvMetricImperial 1.52 meters cm
-    1 m = 152.00 cm
+    1.52 m = 152.00 cm
     :ConvMetricImperial 1 foot inches
-    1 ft = 12.00 inch
+    1.00 ft = 12.00 inch
 
 #### Unit names
 
