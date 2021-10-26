@@ -202,10 +202,6 @@ Add these to your init.vim (or .vimrc or init.lua) for some fast conversion:
     nnoremap <Leader>cs :<C-u>ConvStr<Space>
     nnoremap <Leader>ct :<C-u>ConvBytes<Space>
 
-## TODOs
-
-If new conversions are wished for, they will be added here.
-
 ## Add new conversions
 
 If there is a conversion that you often use and you would like to

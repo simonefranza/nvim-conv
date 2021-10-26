@@ -3,7 +3,6 @@ local TYPE_WEIGHT = 'weight'
 local TYPE_DTR = 'dataTransferRate'
 local TYPE_UNKNOWN = 'unknown'
 local utils = require('conv.utils')
-
 local correspondenceDistance = {
   ---- Metric
   kilometer='km', hectometer='hm', dekameter='dam', meter='m',
@@ -48,6 +47,10 @@ local defaultUnits = {
   weight = 'kg',
   dataTransferRate = 'mbs'
 }
+
+local function getPrecision ()
+  return vim.fn.exists('g:conv_precision') ~= 0 and vim.api.nvim_get_var('conv_precision') or 2
+end
 
 local function convertToBin(param)
   -- This function converts a number from any (2, 8, 10, 16) base to binary and
@@ -127,7 +130,7 @@ local function convertToFarenheit(param)
   -- @param: string of the number
   local initPar = param
   param = utils.checkOctal(param)
-  local precision = vim.g.conv_precision
+  local precision = getPrecision()
   print(string.format("%s = %." .. precision .. "f°C = %." .. precision .. "f°F",
     initPar, param, param*1.8 + 32))
 end
@@ -138,7 +141,7 @@ local function convertToCelsius(param)
   -- @param: string of the number
   local initPar = param
   param = utils.checkOctal(param)
-  local precision = vim.g.conv_precision
+  local precision = getPrecision()
   print(string.format("%s = %." .. precision .. "f°F = %." .. precision .. "f°C",
     initPar, param, (param-32)/1.8))
 end
@@ -243,7 +246,7 @@ local function convertMetricImperial(param)
     ---- Weight - Imperial
     lb=453.592, oz=28.3495,
   }
-  local precision = vim.g.conv_precision
+  local precision = getPrecision()
   print(string.format('%d %s = %.' .. precision .. 'f %s', value, fromUnit,
       value*conversionMap[fromUnit]/conversionMap[toUnit], toUnit))
 end
@@ -261,7 +264,7 @@ local function convertDataTransferRate(param)
     ---- Bytes
     bs=8*10^-6, kbs=8*10^-3, mbs=8, gbs=8*10^3, tbs=8*10^6
   }
-  print(string.format('%d %s = %.' .. vim.g.conv_precision .. 'f %s', value, utils.prettifyDTRUnit(fromUnit),
+  print(string.format('%d %s = %.' .. getPrecision() .. 'f %s', value, utils.prettifyDTRUnit(fromUnit),
     value*conversionMap[fromUnit]/conversionMap[toUnit], utils.prettifyDTRUnit(toUnit)))
 end
 
@@ -293,7 +296,6 @@ local function setPrecision(value)
 end
 
 local function setup()
-  vim.g.conv_precision = 2
   vim.cmd([[
     command! -nargs=1 ConvBin lua require('conv.init').parseMode('bin', <f-args>)
     command! -nargs=1 ConvDec lua require('conv.init').parseMode('dec', <f-args>)
