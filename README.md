@@ -5,6 +5,8 @@ Conv is a simple converter that allows you to convert:
  - numbers from a base to another
  - sequences of bytes into strings and viceversa
  - values from one unit to another one
+ 
+![demo](https://user-images.githubusercontent.com/6499758/138932731-8d274c9d-b8f8-47d9-b035-2a1dc3a9198d.gif)
 
 ## Installation
 
