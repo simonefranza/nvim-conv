@@ -63,7 +63,7 @@ Conversion from decimal, hexadecimal and octal **to binary**
     :ConvBin 45
     45 = 0b101101
 
-Also with negative numbers (the binary number is extended to the next multiple of
+Also with negative numbers (the number of bits is extended to the next multiple of
 4)
 
     :ConvBin -3
@@ -71,7 +71,7 @@ Also with negative numbers (the binary number is extended to the next multiple o
 
 ### Bytes to string
 
-Converts a sequence of bytes **to a string**
+Convert a sequence of bytes **to a string**
 
     :ConvStr 6e76696d2d636f6e76
     6e76696d2d636f6e76 = nvim-conv
@@ -177,7 +177,7 @@ Weight units:
 
 ### Floating point precision
 
-Per default the conversion always prints 2 decimal digits, if you wish 
+By default the conversion always prints 2 decimal digits, if you wish 
 to change it on the fly you can execute:
   
     :ConvSetPrecision 4
@@ -203,6 +203,13 @@ Add these to your init.vim (or .vimrc or init.lua) for some fast conversion:
     nnoremap <Leader>cb :<C-u>ConvBin<Space>
     nnoremap <Leader>cs :<C-u>ConvStr<Space>
     nnoremap <Leader>ct :<C-u>ConvBytes<Space>
+    
+## Upcoming features 
+
+  - Convert between rgb, hsl, hex
+  - Base64
+  - URL encoding
+  - nvim-cmp source or inplace conversion
 
 ## Add new conversions
 
