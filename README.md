@@ -198,6 +198,8 @@ defaults to rgb.
 
 Note: see the demo below to see how the colored square looks like.
 
+![convColors](https://user-images.githubusercontent.com/6499758/139084804-d9f19fab-ba33-416e-9d36-d0622d59b0af.gif)
+
 ## Additional features
 
 ### Floating point precision
