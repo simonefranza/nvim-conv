@@ -4,7 +4,7 @@ Conv is a simple converter that allows you to convert:
 
  - numbers from a [base to another](#base-conversion)
  - sequences of bytes [to a string](#bytes-to-string) and [viceversa](#string-to-bytes)
- - values from one unit to another one ([temperature](#celsius-to-farenheit), [metric and imperial units](#metric-imperial-units), [data transfer rate](#data-transfer-rate))
+ - values from one unit to another one ([temperature](#celsius-to-farenheit), [metric and imperial units](#metric---imperial-units), [data transfer rate](#data-transfer-rates))
  - colors between [hex, rgb, hsl](#color-conversion)
  
 ![demo](https://user-images.githubusercontent.com/6499758/138932731-8d274c9d-b8f8-47d9-b035-2a1dc3a9198d.gif)
