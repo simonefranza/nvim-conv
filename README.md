@@ -2,9 +2,10 @@
 
 Conv is a simple converter that allows you to convert:
 
- - numbers from a base to another
- - sequences of bytes into strings and viceversa
- - values from one unit to another one
+ - numbers from a [base to another](#base-conversion)
+ - sequences of bytes [to a string](#bytes-to-string) and [viceversa](#string-to-bytes)
+ - values from one unit to another one ([temperature](#celsius-to-farenheit), [metric and imperial units](#metric-imperial-units), [data transfer rate](#data-transfer-rate))
+ - colors between [hex, rgb, hsl](#color-conversion)
  
 ![demo](https://user-images.githubusercontent.com/6499758/138932731-8d274c9d-b8f8-47d9-b035-2a1dc3a9198d.gif)
 
@@ -173,6 +174,30 @@ Weight units:
     Imperial System
     lb, oz
 
+### Color Conversion
+
+Enter a color in hex (#DCABA3), rgb (rgb(220,171,163)) or hsl (hsl(9, 45%, 75%))
+to get the conversion in the other two formats. Additionally a small square
+representing the color will be printed at the end of the conversion.
+
+You can input only the values leaving out everything else (#, commas, parentheses, 'rgb', 'hsl')
+and if possible the format will be automatically inferred. If this is not possible
+(for example '10 30 90' could be a valid hex, rgb and hsl format) then it 
+defaults to rgb.
+  
+    :ConvColor hsl 9 45 75
+    hsl 9 45 75 = #DCABA3 = rgb(220, 171, 163)
+    :ConvColor 9 45 75
+    The format of the color, cannot be inferred, so rgb is assumed. 
+    Add "#" (hex) or "hsl" in front if you whish to use another format.
+    9 45 75 (inferred rgb) = #092D4B = hsl(207, 78.6%, 16.5%)
+    :ConvColor aaaaff
+    aaaaff (inferred hex) = rgb(170, 170, 255) = hsl(240, 100.0%, 83.3%)
+    :ConvColor 3db
+    3db (inferred hex) = rgb(51, 221, 187) = hsl(168, 71.4%, 53.3%
+
+Note: see the demo below to see how the colored square looks like.
+
 ## Additional features
 
 ### Floating point precision
@@ -206,7 +231,6 @@ Add these to your init.vim (or .vimrc or init.lua) for some fast conversion:
     
 ## Upcoming features 
 
-  - Convert between rgb, hsl, hex
   - Base64
   - URL encoding
   - nvim-cmp source or inplace conversion

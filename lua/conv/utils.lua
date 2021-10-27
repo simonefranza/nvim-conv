@@ -14,7 +14,7 @@ local function prettifyDTRUnit(unit)
   return firstPart .. '/s'
 end
 
-local function startsWith(myString, substring)
+function startsWith(myString, substring)
   -- This function checks if a string begins with another string
   -- @myString: string to check
   -- @substring: substring with which @myString should start
@@ -133,10 +133,77 @@ local function computeTwosComplement(binary)
   return binary
 end
 
+local function round(num)
+  -- This function rounds a float number to the closest integer
+  if num - math.floor(num) >= 0.5 then
+    return math.ceil(num)
+  end
+  return math.floor(num)
+end
+
+local function convertRgb2Hsl(colors)
+  -- This function converts a table with 3 values from RGB to HSL space
+  -- @colors: table with 3 values in RGB space
+  -- Output: tables with 3 values in HSL space
+  for idx=1,3,1 do
+    colors[idx] = colors[idx]/255
+  end
+  local cMax = math.max(colors[1], colors[2], colors[3])
+  local cMin = math.min(colors[1], colors[2], colors[3])
+  local diff = cMax - cMin
+  local hue = 0
+  if diff == 0 then
+    hue = 0
+  elseif cMax == colors[1] then
+    hue = 60*((colors[2] - colors[3])/diff % 6)
+  elseif cMax == colors[2] then
+    hue = 60*((colors[3] - colors[1])/diff + 2)
+  -- case if cMax == colors[3]
+  else
+    hue = 60*((colors[1] - colors[2])/diff + 4)
+  end
+  local lightness = (cMax + cMin) / 2
+  local saturation = diff == 0 and 0 or diff/(1 - math.abs(2*lightness - 1))
+  return string.format('hsl(%d, %.1f%%, %.1f%%)', hue, saturation*100, lightness*100)
+end
+
+local function convertHsl2Rgb(colors)
+  -- This function converts a table with 3 values from HSL to RGB space
+  -- @colors: table with 3 values in HSL space
+  -- Output: tables with 3 values in RGB space
+  local H = colors[1]
+  local S = colors[2]/100
+  local L = colors[3]/100
+  local C = (1 - math.abs(2*L - 1)) * S
+  local X = C * (1 - math.abs((H/60) % 2 - 1))
+  local m = L - C / 2
+  local R = 0
+  local G = 0
+  local B = 0
+  assert(H >= 0 and H <= 360)
+  if H < 60 then
+    R, G, B = C, X, 0
+  elseif H < 120 then
+    R, G, B = X, C, 0
+  elseif H < 180 then
+    R, G, B = 0, C, X
+  elseif H < 240 then
+    R, G, B = 0, X, C
+  elseif H < 300 then
+    R, G, B = X, 0, C
+  else
+    R, G, B = C, 0, X
+  end
+  return {round((R+m)*255), round((G+m)*255), round((B+m)*255)}
+end
+
 return {
   prettifyDTRUnit = prettifyDTRUnit,
   startsWith = startsWith,
   findClosestMatch = findClosestMatch,
   checkOctal = checkOctal,
-  computeTwosComplement = computeTwosComplement
+  computeTwosComplement = computeTwosComplement,
+  round = round,
+  convertHsl2Rgb = convertHsl2Rgb,
+  convertRgb2Hsl = convertRgb2Hsl
 }
