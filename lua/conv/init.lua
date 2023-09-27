@@ -431,7 +431,7 @@ local function convertColor(param)
     vim.api.nvim_buf_set_lines(bufHandle, 0, 1, false, {'  '})
     --vim.api.nvim_buf_add_highlight(bufHandle, -1, 'ErrorMsg', 0, 0, 2)
     local ns_id = vim.api.nvim_get_namespaces()[NS_NAME]
-    vim.api.nvim__set_hl_ns(ns_id)
+    vim.api.nvim_set_hl_ns(ns_id)
     vim.api.nvim_set_hl(ns_id, HL_NAME, {background=hexColor})
     vim.api.nvim_echo({{outputStr .. ' ', ''}, {'  ', HL_NAME}}, false, {})
 end
